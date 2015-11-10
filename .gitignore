@@ -1,0 +1,9 @@
+shared.rb
+
+bin/
+lib/
+include/
+vim/
+extern/
+ruby/
+source/

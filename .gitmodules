@@ -1,0 +1,16 @@
+[submodule "gubg.std"]
+	path = gubg.std
+	url = https://github.com/gfannes/gubg.std
+	branch = master
+[submodule "gubg.build"]
+	path = gubg.build
+	url = https://github.com/gfannes/gubg.build
+	branch = master
+[submodule "gubg.tools"]
+	path = gubg.tools
+	url = https://github.com/gfannes/gubg.tools
+	branch = master
+[submodule "gubg.ui"]
+	path = gubg.ui
+	url = https://github.com/gfannes/gubg.ui
+	branch = master
