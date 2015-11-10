@@ -1,0 +1,13 @@
+This software is distributed under the EUPL v1.1 license (see eupl_v1.1.txt)
+with the following explicit interpretation of the term "modification" for the
+"Derivative Works" definition:
+
+* Dynamic linking is not interpreted as a modification
+* Static linking is not interpreted as a modification
+* Whole source-file integration is not interpreted as a modification
+   E.g., usage of C++ template code provided by this work is not a modification
+   E.g., Usage of interpreted scripts provided by this work is not a modification
+
+This should allow maximum reuse of this software; only if you modify the
+actual source code files, a derivative work is created which needs to be
+redistributed under the EUPL v1.1 license.
