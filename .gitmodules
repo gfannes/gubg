@@ -14,3 +14,7 @@
 	path = gubg.ui
 	url = https://github.com/gfannes/gubg.ui
 	branch = master
+[submodule "gubg.tools.pm"]
+	path = gubg.tools.pm
+	url = https://github.com/gfannes/gubg.tools.pm
+	branch = master
