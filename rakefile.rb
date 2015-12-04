@@ -1,3 +1,8 @@
+task :update do
+    sh 'git submodule update --init'
+end
+Rake::Task[:update].invoke unless File.exist?('gubg.std/rakefile.rb')
+
 def each_submod(&block)
     submods = %w[build std io tools tools.pm ui].map{|n|"gubg.#{n}"}
     submods.each do |sm|
