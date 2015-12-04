@@ -1,7 +1,16 @@
-task :update do
-    sh 'git submodule update --init'
+namespace :submodule do
+    task :update do
+        sh 'git submodule update --init'
+    end
 end
-Rake::Task[:update].invoke unless File.exist?('gubg.std/rakefile.rb')
+
+#Bootstrapping: if we cannot load the local gubg.build/shared.rb, we have to --init and update the git submodules
+begin
+    require('./gubg.build/shared.rb')
+rescue LoadError
+    Rake::Task['submodule:update'].invoke
+    retry
+end
 
 def each_submod(&block)
     submods = %w[build std io tools tools.pm ui].map{|n|"gubg.#{n}"}
