@@ -23,6 +23,9 @@ end
 task :define => :declare do
     each_submod{sh 'rake define'}
 end
+task :test => :define do
+    each_submod{sh 'rake test'}
+end
 task :uth do
     each_submod do
         sh 'git checkout master'
