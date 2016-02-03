@@ -26,3 +26,7 @@
 	path = gubg.deprecated
 	url = https://github.com/gfannes/gubg.deprecated.git
 	branch = master
+[submodule "gubg.nodejs"]
+	path = gubg.nodejs
+	url = https://github.com/gfannes/gubg.nodejs.git
+	branch = master
