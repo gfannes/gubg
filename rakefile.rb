@@ -27,8 +27,16 @@ task :test => :define do
     each_submod{sh 'rake test'}
 end
 task :uth do
-    each_submod do
-        sh 'git checkout master'
-        sh 'git pull --rebase'
+    updated = false
+    begin
+        each_submod do
+            sh 'git checkout master'
+            sh 'git pull --rebase'
+        end
+    rescue GUBG::MissingSubmoduleError
+        raise if updated
+        sh 'git submodule update --init'
+        updated = true
+        retry
     end
 end
