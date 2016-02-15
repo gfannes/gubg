@@ -30,3 +30,7 @@
 	path = gubg.nodejs
 	url = https://github.com/gfannes/gubg.nodejs.git
 	branch = master
+[submodule "gubg.algo"]
+	path = gubg.algo
+	url = https://github.com/gfannes/gubg.algo.git
+	branch = master
