@@ -34,3 +34,6 @@
 	path = gubg.algo
 	url = https://github.com/gfannes/gubg.algo.git
 	branch = master
+[submodule "gubg.chaiscript"]
+	path = gubg.chaiscript
+	url = https://github.com/gfannes/gubg.chaiscript.git
