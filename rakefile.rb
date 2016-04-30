@@ -13,7 +13,7 @@ rescue LoadError
 end
 
 def each_submod(&block)
-    submods = %w[build std io algo tools chaiscript tools.pm ui].map{|n|"gubg.#{n}"}
+    submods = %w[build std io math ml algo tools chaiscript tools.pm ui].map{|n|"gubg.#{n}"}
     GUBG::each_submod(submods, &block)
 end
 def each_js(&block)
