@@ -41,7 +41,7 @@
 	path = gubg.math
 	url = https://github.com/gfannes/gubg.math.git
 	branch = master
-[submodule "gubg.ml"]
-	path = gubg.ml
-	url = https://github.com/gfannes/gubg.ml.git
+[submodule "gubg.data"]
+	path = gubg.data
+	url = https://github.com/gfannes/gubg.data
 	branch = master
