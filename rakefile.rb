@@ -21,6 +21,9 @@ def each_js(&block)
     GUBG::each_submod(submods, &block)
 end
 
+task :clean do
+    each_submod{sh 'rake clean'}
+end
 task :declare do
     each_submod{sh 'rake declare'}
 end
@@ -29,6 +32,30 @@ task :define => :declare do
 end
 task :test => :define do
     each_submod{sh 'rake test'}
+end
+task :diff do
+    each_submod{sh 'git diff'}
+    sh 'git diff'
+end
+task :status do
+    each_submod{sh 'git status'}
+    sh 'git status'
+end
+task :commit, :msg do |task, args|
+    msg = args[:msg]
+    raise('You have to specify the commit message as "rake commit["<commit message>"]"') unless msg
+    each_submod do
+        if !`git status --porcelain`.empty?
+            sh "git commit -am \"#{msg}\""
+            sh "git pull --rebase"
+            sh "git push"
+        end
+    end
+    if !`git status --porcelain`.empty?
+        sh "git commit -am \"#{msg}\""
+        sh "git pull --rebase"
+        sh "git push"
+    end
 end
 task :uth do
     updated = false
