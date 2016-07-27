@@ -1,0 +1,24 @@
+(cocos2d-x){
+    (install){
+        (ubuntu){
+            ("git clone https://github.com/cocos2d/cocos2d-x")
+            ("cd cocos2d-x")
+            ("git submodule update --init")
+            ("python ./download-deps.py")
+            ("cd build")
+            ("./install-deps-linux.sh")
+            ("mkdir linux-build")
+            ("cd linux-build")
+            ("cmake ../..")
+            ("make -j 8")
+            ("cd ../..")
+            ("sudo cp external/linux-specific/fmod/prebuilt/64-bit/*.so /usr/local/lib")
+            ("sudo cp external/linux-specific/fmod/include/* /usr/local/include")
+            ("sudo ldconfig")
+            ("cd build/linux-build/bin/cpp-tests")
+            ("./cpp-tests")
+            ("cd ../../../..")
+            ("./setup.py")
+        }
+    }
+}
