@@ -41,3 +41,7 @@
 	path = gubg.data
 	url = https://github.com/gfannes/gubg.data
 	branch = master
+[submodule "gubg.arduino"]
+	path = gubg.arduino
+	url = https://github.com/gfannes/gubg.arduino
+	branch = master
