@@ -1,6 +1,8 @@
 shared.rb
 *.o
 *.obj
+*.elf
+*.exe
 
 bin/
 lib/
