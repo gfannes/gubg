@@ -8,9 +8,11 @@ end
 
 task :default => :clean do
     sh "rake define"
-    blink = Build::Executable.new('blink', arch: :uno)
+    arch = :uno
+    arch = :lilypad
+    blink = Build::Executable.new('blink', arch: arch)
     blink.add_sources('blink.cpp')
-    blink.add_library_path(shared_dir('lib'))
+    blink.add_library_path(shared_dir("lib/#{arch}"))
     # blink.add_library('arduino-core')
     blink.build
 end
