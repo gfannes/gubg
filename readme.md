@@ -17,6 +17,10 @@ Install the required dependencies.
 
 `sudo apt install vim-gnome silversearcher-ag meld bless git automake libtool-bin cmake python-dev ruby-dev libgnutls-dev uuid-dev freeglut3 freeglut3-dev libxcb-image0 libxcb-image0-dev libudev-dev libjpeg-dev libopenal-dev libvorbis-dev libflac-dev libfreetype6-dev gcc-avr avr-libc wmctrl libxrandr-dev`
 
+#### Arch/Manjaro
+
+`sudo pacman -S arduino-avr-core`
+
 #### Dependencies for Void linux
 
 `sudo xbps-install neovim git-all ruby-devel gcc gcc-c++ make cmake pkg-config curl wget libtool automake unzip python-devel gnutls-devel libX11-devel glxinfo MesaLib-devel glu-devel libxcb-devel xcb-util-image-devel jpeg-devel libopenal-devel libflac-devel libvorbis-devel freetype-devel vim gvim xterm the_silver_searcher meld`
