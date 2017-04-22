@@ -36,6 +36,7 @@ Install the required dependencies.
 Set the `gubg` environment variable to an absolute path:
 
 `export gubg=$HOME/gubg`
+`export PATH=$PATH:$gubg/bin`
 
 Set the `Custom command` in the `gnome-terminal`:
 
