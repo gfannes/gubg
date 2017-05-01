@@ -9,7 +9,7 @@ end
 task :default => :clean do
     sh "rake define"
     arch = :uno
-    arch = :lilypad
+    # arch = :lilypad
     blink = Build::Executable.new('blink', arch: arch)
     blink.add_sources('blink.cpp')
     blink.add_library_path(shared_dir("lib/#{arch}"))
