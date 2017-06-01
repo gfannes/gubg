@@ -12,6 +12,10 @@ rescue LoadError
     retry
 end
 
+task :default do
+    sh "rake -T"
+end
+
 def each_submod(&block)
     submods = %w[build std io math data algo tools chaiscript tools.pm ui arduino].map{|n|"gubg.#{n}"}
     GUBG::each_submod(submods, &block)
