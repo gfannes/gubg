@@ -1,38 +1,41 @@
 print(">> Top level recipes")
 
+recipe("gubg", "func", fun(r){
+    r.add_header("gubg.std/src", "gubg/**.hpp")
+    r.add_header("gubg.io/src", "gubg/**.hpp")
+    r.add_header("gubg.algo/src", "gubg/**.hpp")
+
+    r.add_source("gubg.io/src", "gubg/**.cpp")
+})
+recipe("catch", "func", fun(r){
+    r.add_source("gubg.std/src", "catch_runner.cpp")
+    r.add_header("extern/catch/single_include", "*.hpp")
+})
+recipe("chai", "func", fun(r){
+    r.add_header("extern/ChaiScript/include", "chaiscript/*.hpp")
+})
+
 recipe("tt", "exe", fun(r){
     r.add_source("gubg.tools.pm/src/app", "tt/**.cpp")
     r.add_header("gubg.tools.pm/src/app", "tt/**.hpp")
 
-    r.add_header("gubg.std/src", "gubg/**.hpp")
-    r.add_header("gubg.io/src", "gubg/**.hpp")
-    r.add_header("gubg.algo/src", "gubg/**.hpp")
-    r.add_source("gubg.io/src", "gubg/**.cpp")
+    r.depends_on("gubg#func")
 })
-
 recipe("pa", "exe", fun(r){
     r.add_source("gubg.tools.pm/src/app", "pa/**.cpp")
     r.add_header("gubg.tools.pm/src/app", "pa/**.hpp")
 
-    r.add_header("gubg.std/src", "gubg/**.hpp")
-    r.add_header("gubg.io/src", "gubg/**.hpp")
-    r.add_header("gubg.algo/src", "gubg/**.hpp")
-    r.add_source("gubg.io/src", "gubg/**.cpp")
-    r.add_header("extern/ChaiScript/include", "chaiscript/*.hpp")
+    r.depends_on("gubg#func")
+    r.depends_on("chai#func")
 
     r.add_library("dl")
     r.add_library("pthread")
 })
-
 recipe("ut", "exe", fun(r){
-    r.add_source("gubg.std/src", "catch_runner.cpp")
     r.add_source("gubg.io/src/test", "**.cpp")
 
-    r.add_header("gubg.std/src", "gubg/**.hpp")
-    r.add_header("gubg.io/src", "gubg/**.hpp")
-    r.add_source("gubg.io/src", "gubg/**.cpp")
-
-    r.add_header("extern/catch/single_include", "*.hpp")
+    r.depends_on("catch#func")
+    r.depends_on("gubg#func")
 
     r.add_library("stdc++fs")
 })
