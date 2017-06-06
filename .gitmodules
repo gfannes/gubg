@@ -45,3 +45,7 @@
 	path = gubg.arduino
 	url = https://github.com/gfannes/gubg.arduino
 	branch = master
+[submodule "cook"]
+	path = cook
+	url = https://github.com/gfannes/cook
+	branch = master

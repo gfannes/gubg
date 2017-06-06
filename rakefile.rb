@@ -12,6 +12,8 @@ rescue LoadError
     retry
 end
 
+require("./cook/load.rb")
+
 task :default do
     sh "rake -T"
 end
@@ -32,6 +34,10 @@ task :declare do
     each_submod{sh 'rake declare'}
 end
 task :define => :declare do
+    %w[tt pa].each do |app|
+        sh "cook.exe -c release #{app}#exe"
+        GUBG::publish("#{app}.exe", dst: "bin")
+    end
     each_submod{sh 'rake define'}
 end
 task :test => :define do
