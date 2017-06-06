@@ -24,4 +24,17 @@ recipe("pa", "exe", fun(r){
     r.add_library("pthread")
 })
 
+recipe("ut", "exe", fun(r){
+    r.add_source("gubg.std/src", "catch_runner.cpp")
+    r.add_source("gubg.io/src/test", "**.cpp")
+
+    r.add_header("gubg.std/src", "gubg/**.hpp")
+    r.add_header("gubg.io/src", "gubg/**.hpp")
+    r.add_source("gubg.io/src", "gubg/**.cpp")
+
+    r.add_header("extern/catch/single_include", "*.hpp")
+
+    r.add_library("stdc++fs")
+})
+
 print("<< Top level recipes")

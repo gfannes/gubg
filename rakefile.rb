@@ -34,14 +34,14 @@ task :declare do
     each_submod{sh 'rake declare'}
 end
 task :define => :declare do
-    %w[tt pa].each do |app|
+    %w[tt pa ut].each do |app|
         sh "cook.exe -c release #{app}#exe"
         GUBG::publish("#{app}.exe", dst: "bin")
     end
     each_submod{sh 'rake define'}
 end
 task :test => :define do
-    each_submod{sh 'rake test'}
+    sh "./ut.exe -d yes -a [ut][tree]"
 end
 task :diff do
     each_submod{sh 'git diff'}
