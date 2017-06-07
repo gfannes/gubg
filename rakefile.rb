@@ -19,7 +19,7 @@ task :default do
 end
 
 def each_submod(&block)
-    submods = %w[build std io math data algo tools chaiscript tools.pm ui arduino].map{|n|"gubg.#{n}"}
+    submods = %w[build std io math data algo tools chaiscript tools.pm ui arduino].map{|n|"gubg.#{n}"} + %w[cook]
     GUBG::each_submod(submods, &block)
 end
 def each_js(&block)
@@ -34,8 +34,10 @@ task :declare do
     each_submod{sh 'rake declare'}
 end
 task :define => :declare do
+    mode = "release"
+    # mode = "debug"
     %w[tt pa ut].each do |app|
-        sh "cook.exe -c release #{app}#exe"
+        sh "cook.exe -c #{mode} #{app}#exe"
         GUBG::publish("#{app}.exe", dst: "bin")
     end
     each_submod{sh 'rake define'}
