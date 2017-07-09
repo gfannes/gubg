@@ -31,6 +31,12 @@ recipe("pa", "exe", fun(r){
     r.add_library("dl")
     r.add_library("pthread")
 })
+recipe("gplot", "exe", fun(r){
+    r.add_source("gubg.tools/src", "gplot/**.cpp")
+    r.add_header("gubg.tools/src", "gplot/**.hpp")
+
+    r.depends_on("gubg#func")
+})
 recipe("ut", "exe", fun(r){
     r.add_source("gubg.io/src/test", "**.cpp")
 
