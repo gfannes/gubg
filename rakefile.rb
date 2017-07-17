@@ -6,7 +6,7 @@ end
 
 #Bootstrapping: if we cannot load the local gubg.build/shared.rb, we have to --init and update the git submodules
 begin
-    require('./gubg.build/shared.rb')
+    require_relative('gubg.build/shared.rb')
 rescue LoadError
     Rake::Task['submodule:update'].invoke
     retry
