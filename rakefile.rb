@@ -20,11 +20,11 @@ end
 
 def each_submod(&block)
     submods = %w[build std io math data algo tools chaiscript tools.pm ui arduino].map{|n|"gubg.#{n}"} + %w[cook]
-    GUBG::each_submod(submods, &block)
+    GUBG::each_submod(submods: submods, &block)
 end
 def each_js(&block)
     submods = %w[nodejs].map{|n|"gubg.#{n}"}
-    GUBG::each_submod(submods, &block)
+    GUBG::each_submod(submods: submods, &block)
 end
 
 task :clean do
