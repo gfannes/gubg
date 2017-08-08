@@ -31,19 +31,20 @@ task :clean do
     each_submod{sh 'rake clean'}
 end
 task :declare do
-    each_submod{sh 'rake declare'}
+    # each_submod{sh 'rake declare'}
 end
 task :define => :declare do
     mode = "release"
     # mode = "debug"
-    %w[tt pa gplot ut].each do |app|
+    %w[cook tt pa gplot ut].each do |app|
         sh "cook.exe -c #{mode} #{app}#exe"
         GUBG::publish("#{app}.exe", dst: "bin")
     end
-    each_submod{sh 'rake define'}
+    # each_submod{sh 'rake define'}
 end
-task :test => :define do
-    sh "./ut.exe -d yes -a [ut][tree]"
+task :test, [:filter] => [:define] do |t,args|
+    filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
+    sh "./ut.exe -d yes -a #{filter}"
 end
 task :diff do
     each_submod{sh 'git diff'}
