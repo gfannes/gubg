@@ -1,12 +1,12 @@
-log(">> gubg recipes")
-
+add_dir("gubg.std")
+add_dir("gubg.io")
+add_dir("gubg.algo")
 recipe("gubg", "func", fun(r){
-    r.add_header("gubg.std/src", "gubg/**.hpp")
-    r.add_header("gubg.io/src", "gubg/**.hpp")
-    r.add_header("gubg.algo/src", "gubg/**.hpp")
-
-    r.add_source("gubg.io/src", "gubg/**.cpp")
+    r.depends_on("gubg.std#func")
+    r.depends_on("gubg.io#func")
+    r.depends_on("gubg.algo#func")
 })
+
 recipe("catch", "func", fun(r){
     r.add_source("gubg.std/src", "catch_runner.cpp")
     r.add_header("extern/catch/single_include", "*.hpp")
@@ -20,13 +20,12 @@ add_dir("gubg.tools.pm")
 add_dir("gubg.tools")
 
 recipe("ut", "exe", fun(r){
-    r.add_source("gubg.io/src/test", "**.cpp")
-    r.add_source("gubg.algo/test", "**.cpp")
+    r.depends_on("gubg.std#ut")
+    r.depends_on("gubg.io#ut")
+    r.depends_on("gubg.algo#ut")
 
     r.depends_on("catch#func")
     r.depends_on("gubg#func")
 
     r.add_library("stdc++fs")
 })
-
-log("<< gubg recipes")
