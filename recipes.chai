@@ -1,28 +1,17 @@
-add_dir("gubg.std")
-add_dir("gubg.io")
-add_dir("gubg.algo")
-recipe("gubg", "func", fun(r){
-    r.depends_on("gubg.std#func")
-    r.depends_on("gubg.io#func")
-    r.depends_on("gubg.algo#func")
-})
+auto mods = ["gubg.std", "gubg.math", "gubg.io", "gubg.algo", "gubg.chaiscript"]
 
-recipe("catch", "func", fun(r){
-    r.add_source("gubg.std/src", "catch_runner.cpp")
-    r.add_header("extern/catch/single_include", "*.hpp")
-})
-recipe("chai", "func", fun(r){
-    r.add_header("extern/ChaiScript/include", "chaiscript/*.hpp")
+for (mod: mods) { add_dir(mod) }
+
+recipe("gubg", "func", fun[mods](r){
+    for (mod: mods) { r.depends_on("${mod}#func") }
 })
 
 add_dir("cook")
 add_dir("gubg.tools.pm")
 add_dir("gubg.tools")
 
-recipe("ut", "exe", fun(r){
-    r.depends_on("gubg.std#ut")
-    r.depends_on("gubg.io#ut")
-    r.depends_on("gubg.algo#ut")
+recipe("ut", "exe", fun[mods](r){
+    for (mod: mods) { r.depends_on("${mod}#ut") }
 
     r.depends_on("catch#func")
     r.depends_on("gubg#func")
