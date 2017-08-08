@@ -1,4 +1,4 @@
-print(">> gubg recipes")
+log(">> gubg recipes")
 
 recipe("gubg", "func", fun(r){
     r.add_header("gubg.std/src", "gubg/**.hpp")
@@ -16,29 +16,9 @@ recipe("chai", "func", fun(r){
 })
 
 add_dir("cook")
+add_dir("gubg.tools.pm")
+add_dir("gubg.tools")
 
-recipe("tt", "exe", fun(r){
-    r.add_source("gubg.tools.pm/src/app", "tt/**.cpp")
-    r.add_header("gubg.tools.pm/src/app", "tt/**.hpp")
-
-    r.depends_on("gubg#func")
-})
-recipe("pa", "exe", fun(r){
-    r.add_source("gubg.tools.pm/src/app", "pa/**.cpp")
-    r.add_header("gubg.tools.pm/src/app", "pa/**.hpp")
-
-    r.depends_on("gubg#func")
-    r.depends_on("chai#func")
-
-    r.add_library("dl")
-    r.add_library("pthread")
-})
-recipe("gplot", "exe", fun(r){
-    r.add_source("gubg.tools/src", "gplot/**.cpp")
-    r.add_header("gubg.tools/src", "gplot/**.hpp")
-
-    r.depends_on("gubg#func")
-})
 recipe("ut", "exe", fun(r){
     r.add_source("gubg.io/src/test", "**.cpp")
     r.add_source("gubg.algo/test", "**.cpp")
@@ -49,4 +29,4 @@ recipe("ut", "exe", fun(r){
     r.add_library("stdc++fs")
 })
 
-print("<< gubg recipes")
+log("<< gubg recipes")
