@@ -44,12 +44,12 @@ task :uth do
     updated = false
     begin
         each_submod do |info|
-            sh 'git checkout #{info[:branch]}'
-            sh 'git pull --rebase'
+            sh "git checkout #{info[:branch]}"
+            sh "git pull --rebase"
         end
     rescue GUBG::MissingSubmoduleError
         raise if updated
-        sh 'git submodule update --init'
+        sh "git submodule update --ini"
         updated = true
         retry
     end
@@ -65,7 +65,7 @@ task :run do
     end
 end
 
-task :test, [:filter] => [:define] do |t,args|
+task :test, [:filter] => [:run] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     sh "./ut.exe -d yes -a #{filter}"
 end
