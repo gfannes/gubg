@@ -27,26 +27,49 @@ def each_js(&block)
     GUBG::each_submod(submods: submods, &block)
 end
 
-task :clean do
-    each_submod{sh 'rake clean'}
+#Mass tasks
+[:clean, :prepare, :update].each do |sym|
+    desc "Mass task: #{sym}"
+    task sym do
+        each_submod do |info|
+            sh("rake #{sym}") do |ok, res|
+                puts("No \"#{sym}\" task present, or it failed, for #{info}") unless ok
+            end
+        end
+    end
 end
-task :declare do
-    # each_submod{sh 'rake declare'}
+
+desc "Update submodules to the HEAD of their branch"
+task :uth do
+    updated = false
+    begin
+        each_submod do |info|
+            sh 'git checkout #{info[:branch]}'
+            sh 'git pull --rebase'
+        end
+    rescue GUBG::MissingSubmoduleError
+        raise if updated
+        sh 'git submodule update --init'
+        updated = true
+        retry
+    end
 end
-task :define => :declare do
+
+task :run do
     mode = "release"
     # mode = "debug"
     %w[cook tt pa gplot ut].each do |app|
-    # %w[cook].each do |app|
+        # %w[cook].each do |app|
         sh "cook.exe -c #{mode} #{app}#exe"
         GUBG::publish("#{app}.exe", dst: "bin")
     end
-    # each_submod{sh 'rake define'}
 end
+
 task :test, [:filter] => [:define] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     sh "./ut.exe -d yes -a #{filter}"
 end
+
 task :diff do
     each_submod{sh 'git diff'}
     sh 'git diff'
@@ -71,17 +94,4 @@ task :commit, :msg do |task, args|
         sh "git push"
     end
 end
-task :uth do
-    updated = false
-    begin
-        each_submod do
-            sh 'git checkout master'
-            sh 'git pull --rebase'
-        end
-    rescue GUBG::MissingSubmoduleError
-        raise if updated
-        sh 'git submodule update --init'
-        updated = true
-        retry
-    end
-end
+
