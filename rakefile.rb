@@ -28,14 +28,33 @@ def each_js(&block)
 end
 
 #Mass tasks
-[:clean, :prepare, :update].each do |sym|
-    desc "Mass task: #{sym}"
-    task sym do
-        each_submod do |info|
-            sh("rake #{sym}") do |ok, res|
-                puts("No \"#{sym}\" task present, or it failed, for #{info}") unless ok
-            end
+run_mass_task = ->(name){
+    each_submod do |info|
+        sh("rake #{name}") do |ok, res|
+            puts("No \"#{name}\" task present, or it failed, for #{info}") unless ok
         end
+    end
+}
+[:clean, :prepare, :run, :update].each do |name|
+    desc "Mass task: #{name}"
+    task name do
+        run_mass_task.call(name)
+    end
+end
+task :clean do
+    rm_rf ".cook"
+end
+
+desc "Build and publish the different targets"
+task :run => :prepare do
+    run_mass_task.call(:run)
+
+    mode = "release"
+    # mode = "debug"
+    %w[cook tt pa gplot ut].each do |app|
+        # %w[cook].each do |app|
+        sh "cook.exe -c #{mode} #{app}#exe"
+        GUBG::publish("#{app}.exe", dst: "bin")
     end
 end
 
@@ -55,17 +74,7 @@ task :uth do
     end
 end
 
-desc "Build and publish the different targets"
-task :run do
-    mode = "release"
-    # mode = "debug"
-    %w[cook tt pa gplot ut].each do |app|
-        # %w[cook].each do |app|
-        sh "cook.exe -c #{mode} #{app}#exe"
-        GUBG::publish("#{app}.exe", dst: "bin")
-    end
-end
-
+desc "Build and run the unit tests"
 task :test, [:filter] => [:run] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     sh "./ut.exe -d yes -a #{filter}"

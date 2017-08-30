@@ -14,5 +14,6 @@ ruby/
 source/
 fonts/
 install/
+stage/
 .cache/
 .cook/
