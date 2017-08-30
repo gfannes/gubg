@@ -55,6 +55,7 @@ task :uth do
     end
 end
 
+desc "Build and publish the different targets"
 task :run do
     mode = "release"
     # mode = "debug"
