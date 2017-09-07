@@ -30,9 +30,7 @@ end
 #Mass tasks
 run_mass_task = ->(name){
     each_submod do |info|
-        sh("rake #{name}") do |ok, res|
-            puts("No \"#{name}\" task present, or it failed, for #{info}") unless ok
-        end
+        sh("rake #{name}") unless `rake -W #{name}`.empty?
     end
 }
 [:clean, :prepare, :run, :update].each do |name|
@@ -55,6 +53,16 @@ task :run => :prepare do
         # %w[cook].each do |app|
         sh "cook.exe -c #{mode} -t #{app}#exe"
         GUBG::publish("#{app}.exe", dst: "bin")
+    end
+end
+
+namespace :cook do
+    desc "Install cook from the cook directory"
+    task :install do
+        Dir.chdir("cook") do
+            sh "git submodule update --init --recursive"
+            sh "rake install[../bin]"
+        end
     end
 end
 
