@@ -7,7 +7,7 @@ task :clean do
 end
 
 task :default => :clean do
-    sh "rake define"
+    # sh "rake define"
     arch = :uno
     # arch = :lilypad
     blink = Build::Executable.new('blink', arch: arch)
