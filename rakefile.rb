@@ -51,7 +51,7 @@ task :run => :prepare do
     # mode = "debug"
     %w[cook tt pa gplot ut].each do |app|
         # %w[cook].each do |app|
-        sh "cook.exe -c #{mode} -t #{app}#exe"
+        sh "cook.exe -c #{mode} #{app}#exe"
         GUBG::publish("#{app}.exe", dst: "bin")
     end
 end
