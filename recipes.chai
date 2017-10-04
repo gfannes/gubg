@@ -4,7 +4,7 @@ for (mod: mods) { include(mod) }
 
 add_book("gubg", fun[mods](b){
     b.add_recipe("func", fun[mods](r){
-        for (mod: mods) { r.depends_on("${mod}#func") }
+        for (mod: mods) { r.depends_on("${mod}.func") }
     })
 })
 
@@ -16,10 +16,11 @@ add_book("ut", fun[mods](b){
     b.add_recipe("exe", fun[mods](r){
         r.target_type(executable)
 
-        for (mod: mods) { r.depends_on("${mod}#ut") }
+        for (mod: mods) { r.depends_on("${mod}.ut") }
+        for (mod: mods) { r.depends_on("${mod}.func") }
 
-        r.depends_on("catch#func")
-        r.depends_on("gubg#func")
+        r.depends_on("catch.func")
+        r.depends_on("gubg.func")
 
         r.add_library("stdc++fs")
     })
