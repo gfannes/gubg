@@ -84,8 +84,10 @@ task :uth do
 end
 
 desc "Build and run the unit tests"
-task :test, [:filter] => [:run] do |t,args|
+task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
+    mode = "debug"
+    sh "cook.exe -c #{mode} ut.exe"
     sh "./ut.exe -d yes -a #{filter}"
 end
 
