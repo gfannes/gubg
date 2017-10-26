@@ -19,7 +19,9 @@ task :default do
 end
 
 def each_submod(&block)
-    submods = %w[build std io math data algo tools chaiscript tools.pm ui arduino].map{|n|"gubg.#{n}"} + %w[cook]
+    gubg_parts = %w[build std io math data algo tools chaiscript tools.pm ui arduino]
+    gubg_parts = %w[build std io math data algo tools chaiscript tools.pm]
+    submods = gubg_parts.map{|n|"gubg.#{n}"} + %w[cook]
     GUBG::each_submod(submods: submods, &block)
 end
 def each_js(&block)
@@ -50,7 +52,7 @@ task :run => :prepare do
     mode = "release"
     # mode = "debug"
     # %w[cook tt pa gplot ut].each do |app|
-    %w[ut].each do |app|
+    %w[ut tt pa].each do |app|
         # %w[cook].each do |app|
         sh "cook.exe -c #{mode} #{app}.exe"
         GUBG::publish("#{app}.exe", dst: "bin")
