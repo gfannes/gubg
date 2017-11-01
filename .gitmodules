@@ -33,6 +33,7 @@
 [submodule "gubg.chaiscript"]
 	path = gubg.chaiscript
 	url = https://github.com/gfannes/gubg.chaiscript.git
+	branch = master
 [submodule "gubg.math"]
 	path = gubg.math
 	url = https://github.com/gfannes/gubg.math.git
