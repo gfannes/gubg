@@ -93,14 +93,17 @@ task :test, [:filter] do |t,args|
     sh "./ut.exe -d yes -a #{filter}"
 end
 
+desc "git diff"
 task :diff do
     each_submod{sh 'git diff'}
     sh 'git diff'
 end
+desc "git status"
 task :status do
     each_submod{sh 'git status'}
     sh 'git status'
 end
+desc "git commit"
 task :commit, :msg do |task, args|
     msg = args[:msg]
     raise('You have to specify the commit message as "rake commit["<commit message>"]"') unless msg
@@ -116,5 +119,10 @@ task :commit, :msg do |task, args|
         sh "git pull --rebase"
         sh "git push"
     end
+end
+desc "git push"
+task :push do
+    each_submod{sh 'git push'}
+    sh 'git push'
 end
 

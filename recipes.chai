@@ -2,7 +2,7 @@ auto mods = ["gubg.std", "gubg.math", "gubg.io", "gubg.algo", "gubg.chaiscript"]
 
 for (mod: mods) { include(mod) }
 
-add_book("gubg", fun[mods](b){
+open_book("gubg", fun[mods](b){
     b.add_recipe("func", fun[mods](r){
         for (mod: mods) { r.depends_on("${mod}.func") }
     })
@@ -12,7 +12,7 @@ include("cook")
 include("gubg.tools.pm")
 include("gubg.tools")
 
-add_book("ut", fun[mods](b){
+open_book("ut", fun[mods](b){
     b.add_recipe("exe", fun[mods](r){
         r.target_type(executable)
 

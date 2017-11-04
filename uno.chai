@@ -1,4 +1,4 @@
-add_book("uno", fun(b) {
+open_book("uno", fun(b) {
     b.add_recipe("lib", fun(r) {
         r.display_name("uno.lib")
         r.target_type(static_library)
