@@ -43,6 +43,9 @@ run_mass_task = ->(name){
 end
 task :clean do
     rm_rf ".cook"
+    %w[dxf log a out].each do |ext|
+        rm_f FileList.new "*.#{ext}"
+    end
 end
 
 desc "Build and publish the different targets"

@@ -1,10 +1,10 @@
-auto mods = ["gubg.std", "gubg.math", "gubg.io", "gubg.algo", "gubg.chaiscript"]
+auto mods = ["std", "math", "io", "algo", "chaiscript"]
 
-for (mod: mods) { include(mod) }
+for (mod: mods) { include("gubg.${mod}") }
 
-open_book("gubg", fun[mods](b){
-    b.add_recipe("func", fun[mods](r){
-        for (mod: mods) { r.depends_on("${mod}.func") }
+root.book("gubg", fun[mods](b){
+    b.recipe("func", "library", fun[mods](r){
+        for (mod: mods) { r.depends_on("${mod}/func") }
     })
 })
 
@@ -12,16 +12,13 @@ include("cook")
 include("gubg.tools.pm")
 include("gubg.tools")
 
-open_book("ut", fun[mods](b){
-    b.add_recipe("exe", fun[mods](r){
-        r.target_type(executable)
+root.book("ut", fun[mods](b){
+    b.recipe("exe", "executable", fun[mods](r){
+        for (mod: mods) { r.depends_on("gubg/${mod}/ut") }
 
-        for (mod: mods) { r.depends_on("${mod}.ut") }
-        for (mod: mods) { r.depends_on("${mod}.func") }
+        r.depends_on("catch/func")
+        r.depends_on("gubg/func")
 
-        r.depends_on("catch.func")
-        r.depends_on("gubg.func")
-
-        r.add_library("stdc++fs")
+        r.library("stdc++fs")
     })
 })

@@ -1,37 +1,37 @@
-open_book("uno", fun(b) {
-    b.add_recipe("lib", fun(r) {
+root.book("uno", fun(b) {
+    b.recipe("lib", fun(r) {
         r.display_name("uno.lib")
         r.target_type(static_library)
-        r.add_source("gubg.arduino/extern/Arduino/hardware/arduino/avr/cores/arduino", "main.cpp")
-        r.add_header("gubg.arduino/extern/Arduino/hardware/arduino/avr/variants/standard", "pins_arduino.h")
-//        r.add_header("src", "**/*.hpp")
+        r.add("gubg.arduino/extern/Arduino/hardware/arduino/avr/cores/arduino", "main.cpp")
+        r.add("gubg.arduino/extern/Arduino/hardware/arduino/avr/variants/standard", "pins_arduino.h")
+//        r.add("src", "**/*.hpp")
 //        
-//        r.add_header("gubg.std/src", "gubg/**.hpp")
+//        r.add("gubg.std/src", "gubg/**.hpp")
 //        
-//        r.add_header("gubg.io/src", "gubg/**.hpp")
-//        r.add_source("gubg.io/src", "gubg/**.cpp")
+//        r.add("gubg.io/src", "gubg/**.hpp")
+//        r.add("gubg.io/src", "gubg/**.cpp")
 //        
-//        r.add_header("gubg.chaiscript/extern/ChaiScript/include", "**.hpp")       
+//        r.add("gubg.chaiscript/extern/ChaiScript/include", "**.hpp")       
 //        
-//        r.add_library("dl")
-//        r.add_library("pthread")
-//        r.add_library("stdc++fs")
+//        r.library("dl")
+//        r.library("pthread")
+//        r.library("stdc++fs")
     })
-    b.add_recipe("exe", fun(r) {
+    b.recipe("exe", fun(r) {
         r.display_name("uno.exe")
         r.target_type(executable)
-        r.add_source("src", "uno.cpp")
-//        r.add_header("src", "**/*.hpp")
+        r.add("src", "uno.cpp")
+//        r.add("src", "**/*.hpp")
 //        
-//        r.add_header("gubg.std/src", "gubg/**.hpp")
+//        r.add("gubg.std/src", "gubg/**.hpp")
 //        
-//        r.add_header("gubg.io/src", "gubg/**.hpp")
-//        r.add_source("gubg.io/src", "gubg/**.cpp")
+//        r.add("gubg.io/src", "gubg/**.hpp")
+//        r.add("gubg.io/src", "gubg/**.cpp")
 //        
-//        r.add_header("gubg.chaiscript/extern/ChaiScript/include", "**.hpp")       
+//        r.add("gubg.chaiscript/extern/ChaiScript/include", "**.hpp")       
 //        
-//        r.add_library("dl")
-//        r.add_library("pthread")
-//        r.add_library("stdc++fs")
+//        r.library("dl")
+//        r.library("pthread")
+//        r.library("stdc++fs")
     })
 })
