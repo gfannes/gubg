@@ -19,8 +19,8 @@ Install the required dependencies.
 
 #### Arch/Manjaro
 
-`sudo pacman -S gcc-multilib gvim ruby nemiver meld bless tk arduino-avr-core ninja cmake`
-`sudo pacman -S yaourt audacity tree inkscape pandoc chromium`
+`sudo pacman -S gcc-multilib gvim wmctrl ruby nemiver meld bless tk arduino-avr-core make ninja cmake qtcreator the_silver_searcher`
+`sudo pacman -S yaourt audacity tree inkscape pandoc chromium gnuplot fakeroot patch`
 
 #### Dependencies for Void linux
 
