@@ -19,7 +19,8 @@ Install the required dependencies.
 
 #### Arch/Manjaro
 
-`sudo pacman -S arduino-avr-core`
+`sudo pacman -S gcc-multilib gvim ruby nemiver meld bless tk arduino-avr-core ninja cmake`
+`sudo pacman -S yaourt audacity tree inkscape pandoc chromium`
 
 #### Dependencies for Void linux
 
@@ -44,6 +45,7 @@ Set the `Custom command` in the `gnome-terminal`:
 
 ### Update and install
 
-`rake uth`
-`rake define`
+`git submodule update --init --recursive`
+`rake prepare`
+`rake run`
 
