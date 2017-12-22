@@ -59,7 +59,12 @@ task :run => :prepare do
         # %w[cook].each do |app|
         sh "cook.exe -c #{mode} /#{app}/exe"
         sh "ninja"
-        GUBG::publish("#{app}.exe", dst: "bin")
+        dir = case app
+              when "gplot" then "gubg.tools"
+              else "." end
+        Dir.chdir(dir) do
+            GUBG::publish("#{app}.exe", dst: "bin")
+        end
     end
 end
 
