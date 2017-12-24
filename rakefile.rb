@@ -49,17 +49,17 @@ task :clean do
 end
 
 desc "Build and publish the different targets"
-task :run => :prepare do
-    run_mass_task.call(:run)
-
+task :build do
     mode = "release"
     # mode = "debug"
     # %w[cook tt pa gplot ut].each do |app|
     %w[ut tt pa gplot].each do |app|
         # %w[cook].each do |app|
         sh "cook.exe -c #{mode} /#{app}/exe"
+        sh "ninja -t clean"
         sh "ninja"
         dir = case app
+              when "tt", "pa" then "gubg.tools.pm"
               when "gplot" then "gubg.tools"
               else "." end
         Dir.chdir(dir) do
@@ -67,6 +67,7 @@ task :run => :prepare do
         end
     end
 end
+task :run => [:prepare, :build]
 
 namespace :cook do
     desc "Install cook from the cook directory"
