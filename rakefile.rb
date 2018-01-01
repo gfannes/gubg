@@ -56,7 +56,7 @@ task :build do
     %w[ut tt pa gplot].each do |app|
         # %w[cook].each do |app|
         sh "cook.exe -c #{mode} /#{app}/exe"
-        sh "ninja -t clean"
+        # sh "ninja -t clean"
         sh "ninja"
         dir = case app
               when "tt", "pa" then "gubg.tools.pm"
