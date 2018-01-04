@@ -20,7 +20,7 @@ end
 
 def each_submod(&block)
     gubg_parts = %w[build std io math data algo tools chaiscript tools.pm ui arduino]
-    gubg_parts = %w[build std io math data algo tools chaiscript tools.pm]
+    gubg_parts = %w[build std io math data algo ml tools chaiscript tools.pm]
     submods = gubg_parts.map{|n|"gubg.#{n}"} + %w[cook]
     GUBG::each_submod(submods: submods, &block)
 end
