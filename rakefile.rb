@@ -99,6 +99,7 @@ desc "Build and run the unit tests"
 task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     mode = "debug"
+    mode = "release"
     sh "cook.exe -c #{mode} /ut/exe"
     sh "ninja"
     sh "./ut.exe -d yes -a #{filter}"
