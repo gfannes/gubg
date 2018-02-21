@@ -1,17 +1,11 @@
-namespace :submodule do
-    task :update do
-        sh 'git submodule update --init'
-    end
-end
-
-#Bootstrapping: if we cannot load the local gubg.build/shared.rb, we have to --init and update the git submodules
 begin
-    require_relative('gubg.build/shared.rb')
+    require_relative('gubg.build/bootstrap.rb')
 rescue LoadError
-    Rake::Task['submodule:update'].invoke
+    sh "git submodule update --init"
+    sh "rake uth prepare"
     retry
 end
-
+require("gubg/shared")
 require("./cook/load.rb")
 
 task :default do

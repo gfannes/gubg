@@ -46,11 +46,11 @@
 	path = gubg.arduino
 	url = https://github.com/gfannes/gubg.arduino
 	branch = master
-[submodule "cook"]
-	path = cook
-	url = https://github.com/gfannes/cook
-	branch = clean
 [submodule "gubg.ml"]
 	path = gubg.ml
 	url = https://github.com/gfannes/gubg.ml
+	branch = master
+[submodule "cook"]
+	path = cook
+	url = https://github.com/decode-it/cook
 	branch = master
