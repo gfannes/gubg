@@ -20,7 +20,7 @@ Install the required dependencies.
 #### Arch/Manjaro
 
 `sudo pacman -S gcc-multilib gvim wmctrl ruby nemiver meld bless tk arduino-avr-core make ninja cmake qtcreator the_silver_searcher`
-`sudo pacman -S yaourt audacity tree inkscape pandoc chromium gnuplot fakeroot patch slack-desktop gnome-shell-extension-system-monitor-git`
+`sudo pacman -S yaourt audacity tree inkscape pandoc chromium gnuplot fakeroot patch slack-desktop gnome-shell-extension-system-monitor-git xclip`
 `yaourt neovim neovim-plug python-neovim`
 
 #### Dependencies for Void linux
