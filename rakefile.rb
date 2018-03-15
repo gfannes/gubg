@@ -6,7 +6,7 @@ rescue LoadError
     retry
 end
 require("gubg/shared")
-require("./cook/load.rb")
+# require("./cook/load.rb")
 
 task :default do
     sh "rake -T"
