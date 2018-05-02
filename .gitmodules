@@ -50,7 +50,3 @@
 	path = gubg.ml
 	url = https://github.com/gfannes/gubg.ml
 	branch = master
-[submodule "cook"]
-	path = cook
-	url = https://github.com/decode-it/cook
-	branch = master
