@@ -8,7 +8,6 @@ root.book("gubg", fun[mods](b){
     })
 })
 
-include("cook")
 include("gubg.tools.pm")
 include("gubg.tools")
 

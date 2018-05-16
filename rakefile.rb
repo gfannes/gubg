@@ -6,7 +6,6 @@ rescue LoadError
     retry
 end
 require("gubg/shared")
-# require("./cook/load.rb")
 
 task :default do
     sh "rake -T"
@@ -15,7 +14,7 @@ end
 def each_submod(&block)
     gubg_parts = %w[build std io math data algo tools chaiscript tools.pm ui arduino]
     gubg_parts = %w[build std io math data algo ml tools chaiscript tools.pm arduino]
-    submods = gubg_parts.map{|n|"gubg.#{n}"} + %w[cook]
+    submods = gubg_parts.map{|n|"gubg.#{n}"}
     GUBG::each_submod(submods: submods, &block)
 end
 def each_js(&block)
@@ -46,32 +45,13 @@ desc "Build and publish the different targets"
 task :build do
     mode = "release"
     # mode = "debug"
-    # %w[cook tt pa gplot ut].each do |app|
     %w[ut tt pa gplot].each do |app|
-        # %w[cook].each do |app|
-        sh "cook.exe -c #{mode} /#{app}/exe"
-        # sh "ninja -t clean"
+        sh "cook -g ninja -T c++.std=17 -T #{mode} /#{app}/exe"
         sh "ninja"
-        dir = case app
-              when "tt", "pa" then "gubg.tools.pm"
-              when "gplot" then "gubg.tools"
-              else "." end
-        Dir.chdir(dir) do
-            GUBG::publish("#{app}.exe", dst: "bin")
-        end
+        GUBG::publish("#{app}.exe", dst: "bin")
     end
 end
 task :run => [:prepare, :build]
-
-namespace :cook do
-    desc "Install cook from the cook directory"
-    task :install do
-        Dir.chdir("cook") do
-            sh "git submodule update --init --recursive"
-            sh "rake install[../bin]"
-        end
-    end
-end
 
 desc "Update submodules to the HEAD of their branch"
 task :uth do
@@ -94,7 +74,7 @@ task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     mode = "debug"
     mode = "release"
-    sh "cook.exe -c #{mode} /ut/exe"
+    sh "cook -g ninja -T c++.std=17 -T #{mode} /ut/exe"
     sh "ninja"
     sh "./ut.exe -d yes -a #{filter}"
 end
