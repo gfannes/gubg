@@ -42,13 +42,13 @@ task :clean do
 end
 
 desc "Build and publish the different targets"
-task :build do
-    mode = "release"
-    # mode = "debug"
+task :build, [:mode] do |t,args|
+    mode = args[:mode]||"release"
+    dir = ".cook/#{mode}"
     %w[ut tt pa pit gplot].each do |app|
-        sh "cook -g ninja -T c++.std=17 -T #{mode} /#{app}/exe"
+        sh "cook -g ninja -T c++.std=17 -T #{mode} -O #{dir} /#{app}/exe"
         sh "ninja"
-        GUBG::publish("#{app}.exe", dst: "bin")
+        GUBG::publish("#{app}.exe", dst: "bin"){|fn|fn.gsub(/\.exe$/, "")}
     end
 end
 task :run => [:prepare, :build]
