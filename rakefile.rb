@@ -45,7 +45,7 @@ desc "Build and publish the different targets"
 task :build do
     mode = "release"
     # mode = "debug"
-    %w[ut tt pa gplot].each do |app|
+    %w[ut tt pa pit gplot].each do |app|
         sh "cook -g ninja -T c++.std=17 -T #{mode} /#{app}/exe"
         sh "ninja"
         GUBG::publish("#{app}.exe", dst: "bin")
