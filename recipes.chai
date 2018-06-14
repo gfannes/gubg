@@ -13,11 +13,13 @@ include("gubg.tools")
 
 root.book("ut", fun[mods](b){
     b.recipe("exe", "executable", fun[mods](r){
-        for (mod: mods) { r.depends_on("gubg/${mod}/ut") }
+        for (mod: ["ui"]) { r.depends_on("gubg/${mod}/ut") }
 
         r.depends_on("catch/func")
         r.depends_on("gubg/func")
 
-        r.library("stdc++fs")
+        if (my(OS) == OS.Linux){
+            r.library("stdc++fs")
+        }
     })
 })
