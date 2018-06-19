@@ -74,7 +74,7 @@ task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     mode = "debug"
     mode = "release"
-    sh "cook -g ninja -T c++.std=14 -T #{mode} /ut/exe"
+    sh "cook -g ninja -T c++.std=17 -T #{mode} /ut/exe"
     sh "ninja -v"
     sh "./ut.exe -d yes -a #{filter}"
 end

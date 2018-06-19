@@ -13,7 +13,11 @@ include("gubg.tools")
 
 root.book("ut", fun[mods](b){
     b.recipe("exe", "executable", fun[mods](r){
-        for (mod: ["ui"]) { r.depends_on("gubg/${mod}/ut") }
+        if (my(OS) == OS.Windows){
+            for (mod: ["ui"]) { r.depends_on("gubg/${mod}/ut") }
+        } else {
+            for (mod: mods) { r.depends_on("gubg/${mod}/ut") }
+        }
 
         r.depends_on("catch/func")
         r.depends_on("gubg/func")
