@@ -12,18 +12,17 @@ include("gubg.tools.pm")
 include("gubg.tools")
 
 root.book("ut", fun[mods](b){
-    b.recipe("exe", "executable", fun[mods](r){
-        if (my(OS) == OS.Windows){
-            for (mod: ["ui"]) { r.depends_on("gubg/${mod}/ut") }
-        } else {
-            for (mod: mods) { r.depends_on("gubg/${mod}/ut") }
-        }
+    var rcp = cook["catch"].recipe("runner")
 
-        r.depends_on("catch/func")
-        r.depends_on("gubg/func")
+    if (my(OS) == OS.Windows){
+        for (mod: ["ui"]) { rcp.depends_on("gubg/${mod}/ut") }
+    } else {
+        for (mod: mods) { rcp.depends_on("gubg/${mod}/ut") }
+    }
 
-        if (my(OS) == OS.Linux){
-            r.library("stdc++fs")
-        }
-    })
+    rcp.depends_on("gubg/func")
+
+    if (my(OS) == OS.Linux){
+        rcp.library("stdc++fs")
+    }
 })

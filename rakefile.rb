@@ -74,9 +74,9 @@ task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     mode = "debug"
     # mode = "release"
-    sh "cook -g ninja -T c++.std=17 -T #{mode} -O .cook/#{mode} /ut/exe"
+    sh "cook -g ninja -T c++.std=17 -T #{mode} -O .cook/#{mode} /catch/runner"
     sh "ninja -v"
-    sh "./ut.exe -d yes -a #{filter}"
+    sh "./catch.runner -d yes -a #{filter}"
 end
 
 desc "git diff"
