@@ -41,14 +41,28 @@ task :clean do
     end
 end
 
+def cooker(&block)
+    require("gubg/build/Cooker")
+    c = GUBG::Build::Cooker.new
+    case GUBG::os
+    when :windows then c.option("c++.std", 14)
+    else c.option("c++.std", 17) end
+    block.yield(c)
+end
+
 desc "Build and publish the different targets"
 task :build, [:mode] do |t,args|
     mode = args[:mode]||"release"
-    dir = ".cook/#{mode}"
     %w[time_track pa pit gplot chai].each do |app|
-        sh "cook -g ninja -T c++.std=17 -T #{mode} -O #{dir} /#{app}/exe"
-        sh "ninja"
-        GUBG::publish("#{app}.exe", dst: "bin"){|fn|fn.gsub(/\.exe$/, "")}
+        cooker do |c|
+            c.option(mode)
+            c.output("./")
+            c.generate(:ninja, "/#{app}/exe")
+            c.ninja
+        end
+        exe_fn = "#{app}.exe"
+        exe_fn << ".exe" if GUBG::os == :windows
+        GUBG::publish(exe_fn, dst: "bin"){|fn|fn.gsub(/\.exe$/, "")}
     end
 end
 task :run => [:prepare, :build]
@@ -72,11 +86,14 @@ end
 desc "Build and run the unit tests"
 task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
-    mode = "debug"
-    # mode = "release"
-    sh "cook -g ninja -T c++.std=17 -T #{mode} -O .cook/#{mode} /catch/runner"
-    sh "ninja -v"
-    sh "./catch.runner -d yes -a #{filter}"
+    cooker do |c|
+        mode = "debug"
+        # mode = "release"
+        c.option(mode)
+        c.generate(:ninja, "/catch/runner")
+        c.ninja
+        c.run("-d yes -a #{filter}")
+    end
 end
 
 desc "git diff"
