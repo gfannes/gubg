@@ -28,7 +28,7 @@ run_mass_task = ->(name){
         sh("rake #{name}") unless `rake -W #{name}`.empty?
     end
 }
-[:clean, :prepare, :run, :update].each do |name|
+[:clean, :proper, :prepare, :run, :update].each do |name|
     desc "Mass task: #{name}"
     task name do
         run_mass_task.call(name)
@@ -39,6 +39,9 @@ task :clean do
     %w[dxf log a out pdb exe lib].each do |ext|
         rm_f FileList.new "*.#{ext}"
     end
+end
+task :proper => :clean do
+    rm_rf "extern"
 end
 
 def cooker(&block)
