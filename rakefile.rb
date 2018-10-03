@@ -158,6 +158,7 @@ task :push do
 end
 
 desc "pit test"
-task :aaa => :build do
-    sh "pit -f gubg.tools.pm/pit.pit tree"
+task :aaa, [:uri] => :build do |t,args|
+    uri = args[:uri] || ""
+    sh "pit -f gubg.tools.pm/pit.pit tree #{uri}"
 end
