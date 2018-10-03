@@ -157,6 +157,7 @@ task :push do
     sh 'git push'
 end
 
+desc "pit test"
 task :aaa => :build do
     sh "pit -f gubg.tools.pm/pit.pit tree"
 end
