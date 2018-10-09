@@ -160,5 +160,6 @@ end
 desc "pit test"
 task :aaa, [:uri] => :build do |t,args|
     uri = args[:uri] || ""
-    sh "pit -f gubg.tools.pm/pit.pit tree #{uri}"
+    uri = "-u #{uri}" unless uri.empty?
+    sh "pit -f gubg.tools.pm/pit.pit #{uri}"
 end
