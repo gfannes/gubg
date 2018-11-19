@@ -61,7 +61,7 @@ run_mass_task = ->(name){
 end
 task :clean do
     rm_rf ".cook"
-    %w[dxf log a out pdb exe lib].each do |ext|
+    %w[dxf log a out pdb exe lib resp].each do |ext|
         rm_f FileList.new "*.#{ext}"
     end
 end
@@ -120,7 +120,7 @@ task :test, [:filter] do |t,args|
         c.option(mode)
         c.generate(:ninja, "/catch/runner")
         c.ninja
-        c.run("-d yes -a #{filter}")
+        c.run(%w[-d yes -a] << filter)
     end
 end
 
