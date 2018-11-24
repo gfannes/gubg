@@ -24,6 +24,7 @@ Install the required dependencies.
 `yaourt -S --noconfirm yaourt audacity tree inkscape pandoc chromium gnuplot fakeroot patch slack-desktop xclip`
 `yaourt -S --noconfirm neovim neovim-qt neovim-plug python-neovim`
 `yaourt -S --noconfirm qtcreator gnome-shell-extension-system-monitor-git`
+`yaourt -S --noconfirm neovim-plug-git`
 
 #### Dependencies for Void linux
 
