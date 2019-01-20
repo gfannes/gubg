@@ -124,6 +124,14 @@ task :test, [:filter] do |t,args|
     end
 end
 
+desc "Run the python unit tests"
+task :ptest do |t,args|
+    FileList.new("gubg.*/test/src/**/*.py").each do |fn|
+        puts(fn)
+        sh "pytest -s #{fn}"
+    end
+end
+
 desc "git diff"
 task :diff do
     each_submod{sh 'git diff'}
