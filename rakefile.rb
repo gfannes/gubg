@@ -81,7 +81,7 @@ end
 desc "Build and publish the different targets"
 task :build, [:mode] do |t,args|
     mode = args[:mode]||"release"
-    %w[time_track pa pit gplot chai].each do |app|
+    %w[time_track pa pit pigr gplot chai].each do |app|
         cooker do |c|
             c.option(mode)
             c.output("./")
