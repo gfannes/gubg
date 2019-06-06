@@ -169,5 +169,5 @@ desc "pit test"
 task :aaa, [:uri] => :build do |t,args|
     uri = args[:uri] || ""
     uri = "-u #{uri}" unless uri.empty?
-    sh "pit -f pit:gubg.tools.pm/pit.pit -f pit:gubg.tools.pm/tt.pit #{uri}"
+    sh "pit -m report.full -f sprint:sprint.pit -f pit:gubg.tools.pm/pit.pit -f tt:gubg.tools.pm/tt.pit #{uri}"
 end
