@@ -1,0 +1,23 @@
+[geert]{
+    [skills](from:20190612){
+        [cd](efficiency:1)
+        []
+        [ui](efficiency:0.5)
+    }
+    [skills](from:20190620){
+        [ai]
+        []
+    }
+}
+
+[geert]{
+    [skills](from:20190615){
+        [kaka]
+    }
+}
+
+[aa]{
+    [skills](from:20190619){
+        [pipi]
+    }
+}
