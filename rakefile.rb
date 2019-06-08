@@ -80,7 +80,7 @@ end
 
 desc "Build and publish the different targets"
 task :build, [:mode] do |t,args|
-    mode = args[:mode]||"release"
+    mode = args[:mode]||"debug"
     %w[time_track pa pit pigr gplot chai].each do |app|
         cooker do |c|
             c.option(mode)
@@ -169,5 +169,5 @@ desc "pit test"
 task :aaa, [:uri] => :build do |t,args|
     uri = args[:uri] || ""
     uri = "-u #{uri}" unless uri.empty?
-    sh "pit -m report.full -f sprint:sprint.pit -f pit:gubg.tools.pm/pit.pit -f tt:gubg.tools.pm/tt.pit #{uri}"
+    sh "pit -v -r resources.pit -m plan -f sprint:sprint.pit -f pit:gubg.tools.pm/pit.pit -f tt:gubg.tools.pm/tt.pit #{uri}"
 end
