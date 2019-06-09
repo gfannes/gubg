@@ -1,0 +1,86 @@
+[read from file](100)(done){
+    [read auro.pit](30)(done)
+    [multi-file](20)(done){
+        [allow specification of attributes, maybe via include]
+    }
+    [namespace](20)(done)
+    [read multiple attributes](30)(skill:cd)
+}
+[dsl](o){
+    [effort]
+    [duration]
+    [estimate]
+
+    [todo]
+    [done]
+
+    [dependency]
+    [belongs_to]
+
+    [skill]{
+        [propagate](10)
+    }
+
+    [order](10)
+    [key]
+}
+[planner]{
+    [support for mode](10)(done){
+        [options](10)(done)
+    }
+    [ResourceMgr](30)(done){
+        [parse and load](30)(done)
+    }
+    [Resources]{
+        [order for skill](10)(done)
+    }
+    [Planner]{
+        [start and end for node](30)(done)
+        [correct dependencies](30)(done)
+    }
+}
+[report]{
+    [toggle xlinks](20)(done)
+    [tree](done)(100)
+    [color output](100){
+        [gubg](1000)(skill:pipi)
+        [integrate](15)
+    }
+}
+[output]{
+}
+[parser]{
+    [dep](1h)(done)
+    [bel](20)
+    [include](2.5h){
+        [define]
+        [test]
+    }
+}
+[model]{
+    [xtree]{
+        [data](100)(done)
+        [integrate](30)(done)
+        [xtree dep and aggregation](200)(dep:parser/dep){
+            [aggregate according to topological order](100)
+        }
+        [dep and bel]
+    }
+    [include](dep:parser/include)
+    [write-out]{
+        [keep track of orig file](30)
+        [write](30)
+    }
+}
+[ui]{
+    [select terminal framework](100)(todo:0.5h){
+        [rxterm]{
+            [gubg.ui]{
+                [integrate](100)
+                [test](100)
+            }
+            [integrate](200)
+        }
+    }
+    [story output]
+}
