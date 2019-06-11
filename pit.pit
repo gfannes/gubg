@@ -14,8 +14,8 @@
     [todo]
     [done]
 
-    [dependency]
-    [belongs_to]
+    [dependency](done)
+    [belongs_to](done)
 
     [skill]{
         [propagate](10)
@@ -25,6 +25,8 @@
     [key]
 }
 [planner]{
+    [--plan option to enable planning](10)(done)
+    [default resource: single dia](10)(done)
     [support for mode](10)(done){
         [options](10)(done)
     }
@@ -40,6 +42,7 @@
     }
 }
 [report]{
+    [to .tsv file](30)
     [toggle xlinks](20)(done)
     [tree](done)(100)
     [color output](100){
