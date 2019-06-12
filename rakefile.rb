@@ -171,3 +171,7 @@ task :aaa, [:uri] => :build do |t,args|
     uri = "-u #{uri}" unless uri.empty?
     sh "pit -v -r resources.pit -p -f sprint:sprint.pit -f pit:pit.pit -f tt:gubg.tools.pm/tt.pit #{uri} -o test.tsv"
 end
+task :pit => :build do
+    sh "pit -v -f gubg.tools.pm/src/app/test/pit/test1.pit -d . "
+    sh "pit -v -f gubg.tools.pm/src/app/test/pit/test1.pit -d 10.0 -p -o test1.tsv -u product"
+end
