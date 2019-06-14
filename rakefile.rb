@@ -172,6 +172,19 @@ task :aaa, [:uri] => :build do |t,args|
     sh "pit -v -r resources.pit -p -f sprint:sprint.pit -f pit:pit.pit -f tt:gubg.tools.pm/tt.pit #{uri} -o test.tsv"
 end
 task :pit => :build do
-    sh "pit -v -f gubg.tools.pm/src/app/test/pit/test1.pit -d . "
-    sh "pit -v -f gubg.tools.pm/src/app/test/pit/test1.pit -d 10.0 -p -o test1.tsv -u product"
+    test_cases = [1, 2, 3]
+    test_cases.each do |tc|
+        base = "gubg.tools.pm/src/app/test/pit"
+        Dir.chdir(File.join(base, tc.to_s)) do
+            case tc
+            when 1
+                sh "pit -v -f wbs.pit -d . "
+                sh "pit -v -f wbs.pit -d 10.0 -p -o plan.tsv -u product"
+            when 2
+                sh "pit -f wbs.pit -r r.pit -p"
+            when 3
+                sh "pit -f wbs.pit"
+            end
+        end
+    end
 end
