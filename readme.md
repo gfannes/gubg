@@ -19,9 +19,18 @@ Install the required dependencies.
 
 #### Arch/Manjaro
 
-`sudo pacman -S yaourt`
-`yaourt -S --noconfirm gcc-multilib gvim wmctrl ruby nemiver meld bless tk arduino-avr-core make ninja cmake the_silver_searcher`
-`yaourt -S --noconfirm yaourt audacity tree inkscape pandoc chromium gnuplot fakeroot patch slack-desktop xclip`
+Install _yaourt_
+
+`sudo pacman -S --needed base-devel`
+`mkdir tmp && cd tmp`
+`git clone https://aur.archlinux.com/package-query.git && cd package-query && makepkg -si && cd ..`
+`git clone https://aur.archlinux.com/yaourt.git && cd yaourt && makepkg -si && cd ..`
+`cd ..`
+
+Install other packages
+
+`yaourt -S --noconfirm gcc-multilib gvim wmctrl ruby ruby-rake nemiver meld bless tk arduino-avr-core make ninja cmake the_silver_searcher`
+`yaourt -S --noconfirm audacity sox tree inkscape pandoc chromium gnuplot fakeroot patch slack-desktop xclip`
 `yaourt -S --noconfirm neovim neovim-qt neovim-plug python-neovim`
 `yaourt -S --noconfirm qtcreator gnome-shell-extension-system-monitor-git`
 `yaourt -S --noconfirm neovim-plug-git`
