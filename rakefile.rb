@@ -73,7 +73,7 @@ def cooker(&block)
     require("gubg/build/Cooker")
     c = GUBG::Build::Cooker.new
     case GUBG::os
-    when :windows then c.option("c++.std", 14)
+    when :windows then c.option("c++.std", 17)
     else c.option("c++.std", 17) end
     block.yield(c)
 end
