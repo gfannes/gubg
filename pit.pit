@@ -51,6 +51,8 @@
     }
 }
 [output]{
+    [markdown format](4h)
+    [select columns from cli](2h)
 }
 [parser]{
     [dep](1h)(done)
