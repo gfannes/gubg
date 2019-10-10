@@ -13,9 +13,17 @@ I try to be as permissive as possible, when in doubt, please contact me.
 
 Install the required dependencies.
 
-#### Ubuntu 16.04
+#### Ubuntu
 
-`sudo apt install vim-gnome silversearcher-ag meld bless git automake libtool-bin cmake python-dev ruby-dev libgnutls-dev uuid-dev freeglut3 freeglut3-dev libxcb-image0 libxcb-image0-dev libudev-dev libjpeg-dev libopenal-dev libvorbis-dev libflac-dev libfreetype6-dev gcc-avr avr-libc wmctrl libxrandr-dev`
+##### Common
+
+`sudo apt install vim-gnome silversearcher-ag meld bless git automake libtool-bin cmake python-dev ruby-dev uuid-dev freeglut3 freeglut3-dev libxcb-image0 libxcb-image0-dev libudev-dev libjpeg-dev libopenal-dev libvorbis-dev libflac-dev libfreetype6-dev gcc-avr avr-libc wmctrl libxrandr-dev libegl1-mesa-dev`
+`sudo apt install sox nemiver audacity tree`
+`sudo apt install network-manager-vpnc-gnome`
+
+##### 16.04
+
+`sudo apt install libgnutls-dev`
 
 #### Arch/Manjaro
 
