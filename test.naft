@@ -1,0 +1,10 @@
+
+[A:struct](ns:abc){
+    [a:field](type:float)
+    [b:optional](type:int)
+    [c:array](type:char)
+}
+
+[B:struct]{
+    [a:array](type:A)
+}
