@@ -225,7 +225,7 @@ int main()
     B bb;
 
     Reader reader{oss.str()};
-    gubg::sedes::Stack stack; stack.emplace_back();
+    gubg::sedes::Stack stack;
     std::cout << "First read\n";
     reader.stop = true;
     dfs(bb, "", reader, &stack);
