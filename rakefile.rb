@@ -213,11 +213,11 @@ namespace :sedes do
           sh "sedes -i abc.naft -o abc.hpp"
           sh "cat abc.hpp"
           cooker = GUBG::Build::Cooker.new
-          cooker
-            .option("c++.std", 17)
-            .generate(:ninja, "app")
-            .ninja()
-            .run()
+          cooker.option("c++.std", 17).generate(:ninja, "app").ninja()
+          hr_fn = {a: "hr.a.txt", b: "hr.b.txt"}
+          naft_fn = {a: "naft.a.txt", b: "naft.b.txt"}
+          cooker.run("create", "array", "hr.write", hr_fn[:a], "naft.write", naft_fn[:a])
+          cooker.run("naft.read", naft_fn[:a], "hr.write", hr_fn[:b], "naft.write", naft_fn[:b])
         end
       end
     end
