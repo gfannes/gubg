@@ -165,28 +165,61 @@ task :push do
     sh 'git push'
 end
 
-desc "pit test"
-task :aaa, [:uri] => :build do |t,args|
+namespace :pit do
+  desc "manual test"
+  task :manual, [:uri] => :build do |t,args|
     uri = args[:uri] || ""
     uri = "-u #{uri}" unless uri.empty?
     sh "pit -v -r resources.pit -p -f sprint:sprint.pit -f pit:pit.pit -f tt:gubg.tools.pm/tt.pit #{uri} -o test.tsv"
-end
-task :pit => :build do
+  end
+
+  desc "bulk tests"
+  task :test => :build do
     test_cases = [1, 2, 3, 4]
     test_cases.each do |tc|
-        base = "gubg.tools.pm/src/app/test/pit"
-        Dir.chdir(File.join(base, tc.to_s)) do
-            case tc
-            when 1
-                sh "pit -v -f wbs.pit -d . "
-                sh "pit -v -f wbs.pit -d 10.0 -p -o plan.tsv -u product"
-            when 2
-                sh "pit -f wbs.pit -r r.pit -p"
-            when 3
-                sh "pit -f wbs.pit"
-            when 4
-                sh "pit -f wbs.pit"
-            end
+      base = "gubg.tools.pm/src/app/test/pit"
+      Dir.chdir(File.join(base, tc.to_s)) do
+        case tc
+        when 1
+          sh "pit -v -f wbs.pit -d . "
+          sh "pit -v -f wbs.pit -d 10.0 -p -o plan.tsv -u product"
+        when 2
+          sh "pit -f wbs.pit -r r.pit -p"
+        when 3
+          sh "pit -f wbs.pit"
+        when 4
+          sh "pit -f wbs.pit"
         end
+      end
     end
+  end
+end
+
+namespace :sedes do
+  desc "End to end tests"
+  task :ee => :build do
+    test_cases = (0...3).to_a
+    test_cases.each do |tc|
+      base = "gubg.io/test/ee/sedes"
+      Dir.chdir(GUBG.mkdir(base, tc)) do
+        case tc
+        when 0
+          sh "sedes -h"
+        when 1
+          sh "sedes" do |ok,res|
+            raise "Should fail without arguments" if ok
+          end
+        when 2
+          sh "sedes -i abc.naft -o abc.hpp"
+          sh "cat abc.hpp"
+          cooker = GUBG::Build::Cooker.new
+          cooker
+            .option("c++.std", 17)
+            .generate(:ninja, "app")
+            .ninja()
+            .run()
+        end
+      end
+    end
+  end
 end
