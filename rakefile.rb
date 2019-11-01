@@ -214,10 +214,13 @@ namespace :sedes do
           sh "cat abc.hpp"
           cooker = GUBG::Build::Cooker.new
           cooker.option("c++.std", 17).generate(:ninja, "app").ninja()
-          hr_fn = {a: "hr.a.txt", b: "hr.b.txt"}
-          naft_fn = {a: "naft.a.txt", b: "naft.b.txt"}
-          cooker.run("create", "array", "hr.write", hr_fn[:a], "naft.write", naft_fn[:a])
-          cooker.run("naft.read", naft_fn[:a], "hr.write", hr_fn[:b], "naft.write", naft_fn[:b])
+
+          %w[empty optional array].each do |what|
+            hr_fn = {a: "hr.#{what}.a.txt", b: "hr.#{what}.b.txt"}
+            naft_fn = {a: "naft.#{what}.a.txt", b: "naft.#{what}.b.txt"}
+            cooker.run("create", what, "hr.write", hr_fn[:a], "naft.write", naft_fn[:a])
+            cooker.run("naft.read", naft_fn[:a], "hr.write", hr_fn[:b], "naft.write", naft_fn[:b])
+          end
         end
       end
     end
