@@ -81,7 +81,7 @@ end
 desc "Build and publish the different targets"
 task :build, [:mode] do |t,args|
     mode = args[:mode]||"debug"
-    %w[time_track pa pit pigr gplot chai sedes].each do |app|
+    %w[time_track pa pit pigr gplot autoq chai sedes].each do |app|
         cooker do |c|
             c.option(mode)
             c.output("./")
@@ -225,4 +225,22 @@ namespace :sedes do
       end
     end
   end
+end
+
+namespace :autoq do
+    desc "End to end tests"
+    task :ee => :build do
+        test_cases = (0...2).to_a
+        test_cases.each do |tc|
+            base = "gubg.tools/test/ee/autoq"
+            Dir.chdir(GUBG.mkdir(base, tc)) do
+                case tc
+                when 0
+                    sh "autoq -h"
+                when 1
+                    sh "autoq system system.ssv target target.ssv"
+                end
+            end
+        end
+    end
 end
