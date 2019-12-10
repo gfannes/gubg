@@ -238,7 +238,7 @@ namespace :autoq do
                 when 0
                     sh "autoq -h"
                 when 1
-                    sh "autoq system system.ssv target target.ssv population 10 iteration 1"
+                    sh "autoq system system.ssv target target.ssv population 10 iteration 2"
                 end
             end
         end
