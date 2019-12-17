@@ -43,6 +43,10 @@ Install other packages
 `yaourt -S --noconfirm qtcreator gnome-shell-extension-system-monitor-git`
 `yaourt -S --noconfirm neovim-plug-git`
 
+Install nvidia drivers
+
+`sudo mhwd -a pci nonfree 0300`
+
 #### Dependencies for Void linux
 
 `sudo xbps-install neovim git-all ruby-devel gcc gcc-c++ make cmake pkg-config curl wget libtool automake unzip python-devel gnutls-devel libX11-devel glxinfo MesaLib-devel glu-devel libxcb-devel xcb-util-image-devel jpeg-devel libopenal-devel libflac-devel libvorbis-devel freetype-devel vim gvim xterm the_silver_searcher meld`
