@@ -1,4 +1,4 @@
-auto mods = ["std", "math", "io", "algo", "data", "ml", "chaiscript"]
+auto mods = ["std", "math", "io", "algo", "data", "ml", "chaiscript", "ui"]
 
 for (mod: mods) { include("gubg.${mod}") }
 
