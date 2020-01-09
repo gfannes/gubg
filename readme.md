@@ -39,7 +39,7 @@ Install other packages
 
 `yaourt -S --noconfirm gcc-multilib gvim wmctrl ruby ruby-rake nemiver meld bless tk arduino-avr-core make ninja cmake the_silver_searcher`
 `yaourt -S --noconfirm audacity sox tree inkscape pandoc chromium gnuplot fakeroot patch slack-desktop xclip`
-`yaourt -S --noconfirm neovim neovim-qt neovim-plug python-neovim`
+`yaourt -S --noconfirm neovim neovim-qt neovim-plug python-neovim xsel`
 `yaourt -S --noconfirm qtcreator gnome-shell-extension-system-monitor-git`
 `yaourt -S --noconfirm neovim-plug-git`
 
