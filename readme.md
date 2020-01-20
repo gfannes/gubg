@@ -68,6 +68,12 @@ Set the `Custom command` in the `gnome-terminal`:
 
 `bash --init-file /<path_to_gubg>/bin/personal.gfannes.sh`
 
+Load this same start-up script from `.bash_profile` to ensure `tmux` load it as well. Append this line:
+
+`. $gubg/bin/personal.gfannes.sh`
+
+Optionally, create the `$HOME/gubg.sh` script to perform custom operations.
+
 ### Update and install
 
 `git submodule update --init --recursive`
