@@ -120,7 +120,9 @@ task :test, [:filter] do |t,args|
         c.option(mode)
         c.generate(:ninja, "/catch/runner")
         c.ninja
-        c.run(%w[-d yes -a] << filter)
+        args = %w[-d yes -a] << filter
+        c.run(args)
+        # c.debug(args)
     end
 end
 
@@ -238,7 +240,7 @@ namespace :autoq do
                 when 0
                     sh "autoq -h"
                 when 1
-                    sh "autoq system system.ssv target target.ssv population 10 iteration 2"
+                    sh "autoq system system.ssv target target.ssv population 100 iteration 10"
                 end
             end
         end
