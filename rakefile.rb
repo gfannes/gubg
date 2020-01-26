@@ -80,7 +80,9 @@ end
 
 desc "Build and publish the different targets"
 task :build, [:mode] do |t,args|
-    mode = args[:mode]||"debug"
+    default_mode = "release"
+    # default_mode = "debug"
+    mode = args[:mode]||default_mode
     %w[time_track pa pit pigr gplot autoq chai sedes].each do |app|
         cooker do |c|
             c.option(mode)
@@ -240,7 +242,7 @@ namespace :autoq do
                 when 0
                     sh "autoq -h"
                 when 1
-                    sh "autoq system system.ssv target target.ssv population 100 iteration 10"
+                    sh "autoq system system.ssv target target.ssv population 100 iteration 200"
                 end
             end
         end
