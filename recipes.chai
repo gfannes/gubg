@@ -11,9 +11,7 @@ root.book("gubg", fun[mods](b){
 include("gubg.tools.pm")
 include("gubg.tools")
 
-root.book("ut", fun[mods](b){
-    var rcp = cook["catch"].recipe("runner")
-
+root.recipe("gubg/ut", TargetType.Executable, fun[mods](rcp){
     if (my(OS) == OS.Windows){
         for (mod: ["ui"]) { rcp.depends_on("gubg/${mod}/ut") }
     } else {
@@ -21,6 +19,7 @@ root.book("ut", fun[mods](b){
     }
 
     rcp.depends_on("gubg/func")
+    rcp.depends_on("catch/main")
 
     if (my(OS) == OS.Linux){
         rcp.library("stdc++fs")

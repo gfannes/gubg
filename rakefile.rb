@@ -121,7 +121,7 @@ task :test, [:filter] do |t,args|
         # mode = "release"
         c.option(mode)
         # c.option("profile")
-        c.generate(:ninja, "/catch/runner")
+        c.generate(:ninja, "/gubg/ut")
         c.ninja
         args = %w[-d yes -a] << filter
         c.run(args)
