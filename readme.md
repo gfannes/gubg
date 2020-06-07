@@ -1,3 +1,6 @@
+<!--
+[proast](status:todo)
+-->
 Generic Utilities By GUBG
 =========================
 
@@ -80,3 +83,17 @@ Optionally, create the `$HOME/gubg.sh` script to perform custom operations.
 `rake prepare`
 `rake run`
 
+## Features
+
+* [external](key:gubg.algo)
+* [external](key:gubg.std)
+* [external](key:gubg.math)
+* [external](key:gubg.arduino)
+* [external](key:gubg.chaiscript)
+* [external](key:gubg.build)
+* [external](key:gubg.data)
+* [external](key:gubg.ml)
+* [external](key:gubg.tools.pm)
+* [external](key:gubg.tools)
+* [external](key:gubg.io)
+* [external](key:gubg.ui)
