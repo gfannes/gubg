@@ -86,6 +86,7 @@ Optionally, create the `$HOME/gubg.sh` script to perform custom operations.
 ## Features
 
 * [external](key:gubg.algo)
+* [external](key:gubg.io)
 * [external](key:gubg.std)
 * [external](key:gubg.math)
 * [external](key:gubg.arduino)
@@ -95,5 +96,4 @@ Optionally, create the `$HOME/gubg.sh` script to perform custom operations.
 * [external](key:gubg.ml)
 * [external](key:gubg.tools.pm)
 * [external](key:gubg.tools)
-* [external](key:gubg.io)
 * [external](key:gubg.ui)
