@@ -130,10 +130,13 @@ task :test, [:filter] do |t,args|
 end
 
 desc "Run the python unit tests"
-task :ptest do |t,args|
+task :ptest, [:filter] do |t,args|
+    filter = args[:filter] || ""
     FileList.new("gubg.*/test/src/**/*.py").each do |fn|
-        puts(fn)
-        sh "pytest -s #{fn}"
+        if fn[filter]
+            puts(fn)
+            sh "pytest -s #{fn}"
+        end
     end
 end
 
