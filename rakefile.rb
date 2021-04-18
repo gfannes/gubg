@@ -83,7 +83,7 @@ task :build, [:mode] do |t,args|
     default_mode = "release"
     # default_mode = "debug"
     mode = args[:mode]||default_mode
-    %w[time_track pa pit pigr gplot chai sedes].each do |app|
+    %w[time_track pa pit pigr gplot chai sedes sar].each do |app|
         cooker do |c|
             c.option(mode)
             c.output("./")
