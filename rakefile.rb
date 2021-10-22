@@ -72,9 +72,13 @@ end
 def cooker(&block)
     require("gubg/build/Cooker")
     c = GUBG::Build::Cooker.new
+    c.option("c++.std", 17)
     case GUBG::os
-    when :windows then c.option("c++.std", 17)
-    else c.option("c++.std", 17) end
+    when :linux
+    when :macos
+        c.option("target", "x86_64-apple-macos10.15")
+    when :windows
+    end
     block.yield(c)
 end
 
@@ -121,6 +125,7 @@ task :test, [:filter] do |t,args|
         # mode = "release"
         c.option(mode)
         # c.option("profile")
+        c.option("framework", "OpenGL") if GUBG.os == :macos
         c.generate(:ninja, "/gubg/ut")
         c.ninja
         args = %w[-d yes -a] << filter
