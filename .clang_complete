@@ -1,0 +1,11 @@
+-I$gubg/gubg.std/src
+-I$gubg/gubg.io/src
+-I$gubg/gubg.io/extern/termcolor/include
+-I$gubg/gubg.algo/src
+-I$gubg/gubg.arduino/src
+-I$gubg/gubg.build/src
+-I$gubg/gubg.data/src
+-I$gubg/gubg.math/src
+-I$gubg/gubg.ml/src
+-I$gubg/gubg.ui/src
+-I$gubg/gubg.tools.pm/src/app
