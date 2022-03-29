@@ -238,6 +238,11 @@ namespace :sedes do
       end
     end
   end
+  task :rb do
+    sh "ruby gubg.io/app/sedes.rb -i test.rb -I gubg.io/test/ee/sedes -o test.hpp"
+    sh "cat test.hpp"
+    sh "g++ test.cpp -I ./"
+  end
 end
 
 namespace :autoq do
