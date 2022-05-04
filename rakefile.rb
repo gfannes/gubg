@@ -56,3 +56,16 @@ task :ptest, [:filter] do |t,args|
         end
     end
 end
+
+task :default do
+    sh "rake -T"
+end
+
+desc "Clean all modules"
+task :clean => :"gubg:clean"
+
+desc "Prepare all modules"
+task :prepare => :"gubg:prepare"
+
+desc "Install all modules"
+task :install => :"gubg:install"
