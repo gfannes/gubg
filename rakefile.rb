@@ -33,13 +33,13 @@ desc "Build and run the unit tests"
 task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     cooker do |c|
-        mode = "debug"
-        # mode = "release"
+        mode = :debug
+        # mode = :release
         c.option(mode)
         # c.option("profile")
         c.option("framework", "OpenGL") if GUBG.os == :macos
         c.generate(:ninja, "/gubg/ut")
-        c.ninja
+        c.ninja()
         args = %w[-d yes -a] << filter
         c.run(args)
         # c.debug(args)
