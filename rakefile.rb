@@ -2,7 +2,7 @@ require_relative("gubg.build/load")
 
 def cooker(&block)
     require("gubg/build/Cooker")
-    c = GUBG::Build::Cooker.new
+    c = Gubg::Build::Cooker.new
     c.option("c++.std", 17)
     case GUBG.os()
     when :linux
