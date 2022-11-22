@@ -1,6 +1,6 @@
 require(File.join(ENV['gubg'], 'shared'))
 require('gubg/build/Executable')
-include GUBG
+include Gubg
 
 task :clean do
     rm_rf '.cache'

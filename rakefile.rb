@@ -4,7 +4,7 @@ def cooker(&block)
     require("gubg/build/Cooker")
     c = Gubg::Build::Cooker.new
     c.option("c++.std", 17)
-    case GUBG.os()
+    case Gubg.os()
     when :linux
     when :macos
         c.option("target", "x86_64-apple-macos10.15")
@@ -17,11 +17,11 @@ desc "Update submodules to the HEAD of their branch"
 task :uth do
     updated = false
     begin
-        GUBG.each_submod do |info|
+        Gubg.each_submod do |info|
             sh "git checkout #{info[:branch]}"
             sh "git pull --rebase"
         end
-    rescue GUBG::MissingSubmoduleError
+    rescue Gubg::MissingSubmoduleError
         raise if updated
         sh "git submodule update --ini"
         updated = true
@@ -37,7 +37,7 @@ task :test, [:filter] do |t,args|
         # mode = :release
         c.option(mode)
         # c.option("profile")
-        c.option("framework", "OpenGL") if GUBG.os == :macos
+        c.option("framework", "OpenGL") if Gubg.os == :macos
         c.generate(:ninja, "/gubg/ut")
         c.ninja()
         args = %w[-d yes -a] << filter
