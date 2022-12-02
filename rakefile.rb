@@ -3,7 +3,7 @@ require_relative("gubg.build/load")
 def cooker(&block)
     require("gubg/build/Cooker")
     c = Gubg::Build::Cooker.new
-    c.option("c++.std", 17)
+    c.option("c++.std", 20)
     case Gubg.os()
     when :linux
     when :macos
@@ -69,3 +69,18 @@ task :prepare => :"gubg:prepare"
 
 desc "Install all modules"
 task :install => :"gubg:install"
+
+desc 'Generate clangd file'
+task :clangd => :prepare do
+    include_paths = []
+    include_paths += %w[std io].map{|name|"gubg.#{name}/src"}
+    include_paths.map!{|ip|File.realdirpath(ip)}
+    File.open('.clangd', 'w') do |fo|
+        fo.puts('CompileFlags:')
+        fo.puts("    Add: [-std=c++20, #{include_paths.map{|ip|"-I#{ip}"}*', '}]")
+    end
+    cooker() do |c|
+        c.generate(:ninja)
+        c.ninja_compdb()
+    end
+end

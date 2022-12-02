@@ -17,3 +17,6 @@ install/
 stage/
 .cache/
 .cook/
+.clangd
+compile_commands.json
+.clang-format
