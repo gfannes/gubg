@@ -46,6 +46,20 @@ task :test, [:filter] do |t,args|
     end
 end
 
+desc "Run the ruby unit tests"
+task :rtest, [:filter] do |t,args|
+    dirs = FileList.new("gubg.*/src").to_a()
+    ENV['RUBYLIB'] = ([ENV['RUBYLIB']]+dirs)*':'
+    filter = args[:filter] || ""
+    FileList.new("gubg.*/test/src/**/*.rb").each do |fn|
+        if fn[filter]
+            puts("Running tests from '#{fn}'")
+            sh "ruby #{fn}"
+            puts("Done running tests from '#{fn}'")
+        end
+    end
+end
+
 desc "Run the python unit tests"
 task :ptest, [:filter] do |t,args|
     filter = args[:filter] || ""
