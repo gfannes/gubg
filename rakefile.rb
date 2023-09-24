@@ -34,7 +34,7 @@ task :test, [:filter] do |t,args|
     filter = (args[:filter] || "ut").split(":").map{|e|"[#{e}]"}*""
     cooker do |c|
         mode = :debug
-        # mode = :release
+        mode = :release
         c.option(mode)
         # c.option("profile")
         c.option("framework", "OpenGL") if Gubg.os == :macos
