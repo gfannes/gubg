@@ -1,0 +1,7 @@
+target("ut")
+  set_kind("binary")
+  set_languages("cxx20")
+  add_defines("NDEBUG")
+  add_files("**/*.cpp")
+  remove_files("**/app/**/*.cpp", "gubg.io/test/ee/sedes/**.*", "gubg.io/test/src/httplib_tests.cpp", "gubg.io/extern/json/**.*", "gubg.tools/src/autoq/**.*", "gubg.tools/src/**.*", "gubg.tools.pm/**.*", "gubg.ui/extern/imgui-sfml/**.*", "gubg.ui/extern/imgui/**.*", "gubg.ui/extern/SFML/**.*", "gubg.ui/extern/oof/**.*", "gubg.ui/**.*", "gubg.chaiscript/extern/**.*", "gubg.std/extern/**.*", "gubg.chaiscript/src/chai/main.cpp", "gubg.arduino/extern/**.*", "gubg.chaiscript/test/**.*", "gubg.io/extern/**.*", "gubg.build/test/src/test.cpp", "**/*_mtests.cpp", "gubg.io/test/src/gubg/serial/Endpoint_tests.cpp")
+  add_includedirs("gubg.io/src", "gubg.std/src", "gubg.math/src", "gubg.algo/src", "gubg.io/extern/json/single_include", "gubg.std/extern/catch2/single_include/catch2", "gubg.std/extern/catch2/single_include", "gubg.io/extern/cppcodec", "gubg.io/extern/cpp-httplib", "gubg.io/extern/termcolor/include", "gubg.ui/extern/imgui", "gubg.chaiscript/extern/ChaiScript/include", "gubg.chaiscript/test/src", "gubg.chaiscript/src", "gubg.data/src", "gubg.build/test/inc", "gubg.algo/test/src", "gubg.ml/src")
