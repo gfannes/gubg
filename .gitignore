@@ -20,3 +20,6 @@ stage/
 .clangd
 compile_commands.json
 .clang-format
+
+.xmake
+build/
