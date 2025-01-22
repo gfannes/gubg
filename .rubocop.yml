@@ -1,0 +1,72 @@
+AllCops:
+  TargetRubyVersion: 3.3
+  Exclude:
+    - '**/test/**/*'
+
+Layout/IndentationWidth:
+  Width: 4
+
+Lint/LiteralAsCondition:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 60
+
+Metrics/LineLength:
+  Max: 160
+
+Metrics/BlockLength:
+  Max: 100
+
+Metrics/ParameterLists:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 20
+
+Metrics/MethodLength:
+  Max: 100
+
+Metrics/ParameterLists:
+  Max: 10
+
+
+Naming/MethodParameterName:
+  MinNameLength: 2
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+  Enabled: false
+
+Naming/VariableName:
+  Enabled: false
+
+Naming/ConstantName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/LambdaCall:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma

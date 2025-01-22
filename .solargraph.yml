@@ -1,0 +1,19 @@
+---
+include:
+- "**/*.rb"
+exclude:
+- cache/**/*
+require: []
+domains: []
+reporters:
+- rubocop
+- require_not_found
+formatter:
+  rubocop:
+    cops: safe
+    except: []
+    only: []
+    extra_args: []
+require_paths: [gubg.build/src]
+plugins: []
+max_files: 5000
