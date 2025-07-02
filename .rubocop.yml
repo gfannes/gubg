@@ -12,7 +12,7 @@ Lint/LiteralAsCondition:
 Metrics/AbcSize:
   Max: 60
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 160
 
 Metrics/BlockLength:
